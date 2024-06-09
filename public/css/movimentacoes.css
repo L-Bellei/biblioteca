@@ -1,0 +1,144 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	background-color: #000511;
+	box-shadow: 0 1px 2px whitesmoke;
+}
+
+.icone {
+	background-image: url('/assets/logo.png');
+	background-size: cover;
+	height: 40px;
+	width: 40px;
+	margin: 4px 15px;
+}
+
+.navitems {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+}
+
+.navitems a {
+	text-decoration: none;
+	color: #e5e7fb;
+	font-weight: 600;
+	font-size: 18px;
+	padding: 6px 8px;
+}
+
+.navitems a:hover {
+	border-bottom: 1px solid #e5e7fb;
+}
+
+.titulo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	color: #000511;
+}
+
+.subtitulo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	color: #000511;
+}
+
+.form-cadastro {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-label {
+	width: 40%;
+	margin: 10px;
+}
+
+.input-label input,
+select {
+	width: 100%;
+	margin-top: 5px;
+	border: none;
+	border-bottom: 1px solid #000511;
+	padding: 5px;
+}
+
+.input-label input:focus {
+	outline: 0;
+}
+
+.input-data-qtidade {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.form-cadastro button {
+	margin-top: 20px;
+	border: none;
+	background-color: #000511;
+	color: #e5e7fb;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.filtros {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.filtros input[type='text'] {
+	margin-right: 1rem;
+	padding: 0.5rem;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.tabela {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.tabela table {
+	border: 1px solid #000511;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.tabela th {
+	border: 1px solid #000511;
+	padding: 2px 4px;
+	background-color: #000511;
+	color: #e5e7fb;
+	font-size: 18px;
+}
+
+.tabela td {
+	border: 1px solid #000511;
+	padding: 2px 4px;
+	font-size: 18px;
+}

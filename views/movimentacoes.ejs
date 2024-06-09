@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimentações</title>
+  <link rel="stylesheet" href="/css/movimentacoes.css">
+  <script>
+    function filterTable() {
+      const livroFilter = document.getElementById('livroFilter').value.toLowerCase();
+      const tipoFilter = document.getElementById('tipoFilter').value.toLowerCase();
+      const quantidadeFilter = document.getElementById('quantidadeFilter').value.toLowerCase();
+      const table = document.getElementById('transacoesTable');
+      const tr = table.getElementsByTagName('tr');
+
+      for (let i = 1; i < tr.length; i++) {
+        const tdLivro = tr[i].getElementsByTagName('td')[0];
+        const tdTipo = tr[i].getElementsByTagName('td')[1];
+        const tdQuantidade = tr[i].getElementsByTagName('td')[2];
+
+        if (tdLivro && tdTipo && tdQuantidade) {
+          const txtLivro = tdLivro.textContent || tdLivro.innerText;
+          const txtTipo = tdTipo.textContent || tdTipo.innerText;
+          const txtQuantidade = tdQuantidade.textContent || tdQuantidade.innerText;
+
+          if (
+            txtLivro.toLowerCase().indexOf(livroFilter) > -1 &&
+            txtTipo.toLowerCase().indexOf(tipoFilter) > -1 &&
+            txtQuantidade.toLowerCase().indexOf(quantidadeFilter) > -1
+          ) {
+            tr[i].style.display = '';
+          } else {
+            tr[i].style.display = 'none';
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="icone"></div>
+
+    <div class="navitems">
+      <a href="/">Home</a>
+      <a href="/cadastro">Cadastro</a>
+      <a href="/movimentacoes">Movimentações</a>
+    </div>
+  </nav>
+
+  <div class="titulo">
+    <h1>Movimentações</h1>
+  </div>
+
+  <div class="subtitulo">
+    <h2>Registrar Transação</h2>
+  </div>
+
+  <form class="form-cadastro" action="/movimentacoes" method="POST">
+    <div class="input-label">
+      <label>Selecione o livro</label>
+      <select name="livroId" required>
+        <% livros.forEach(livro=> { %>
+          <option value="<%= livro.id %>">
+            <%= livro.titulo %>
+          </option>
+          <% }); %>
+      </select>
+    </div>
+    <div class="input-data-qtidade">
+      <div class="input-label">
+        <label>Tipo de movimentação</label>
+        <select name="tipo" required>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+        </select>
+      </div>
+      <div class="input-label">
+        <label>Quantidade</label>
+        <input type="number" name="quantidade" placeholder="Quantidade" required>
+      </div>
+    </div>
+    <button type="submit">Registrar</button>
+  </form>
+
+  <div class="subtitulo">
+    <h2>Histórico de Transações</h2>
+  </div>
+
+  <div class="filtros">
+    <input type="text" id="livroFilter" onkeyup="filterTable()" placeholder="Filtrar por livro">
+    <input type="text" id="tipoFilter" onkeyup="filterTable()" placeholder="Filtrar por tipo">
+    <input type="text" id="quantidadeFilter" onkeyup="filterTable()" placeholder="Filtrar por quantidade">
+  </div>
+
+  <div class="tabela">
+    <table id="transacoesTable">
+      <thead>
+        <tr>
+          <th>Livro</th>
+          <th>Tipo</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% livros.forEach(livro=> { %>
+          <% livro.Transacaos.forEach(transacao=> { %>
+            <tr>
+              <td>
+                <%= livro.titulo %>
+              </td>
+              <td>
+                <%= transacao.tipo %>
+              </td>
+              <td>
+                <%= transacao.quantidade %>
+              </td>
+            </tr>
+            <% }) %>
+              <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

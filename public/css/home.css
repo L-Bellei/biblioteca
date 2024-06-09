@@ -1,0 +1,113 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 60px;
+	background-color: #000511;
+	box-shadow: 0 1px 2px whitesmoke;
+}
+
+.icone {
+	background-image: url('/assets/logo.png');
+	background-size: cover;
+	height: 40px;
+	width: 40px;
+	margin: 4px 15px;
+}
+
+.navitems {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+}
+
+.navitems a {
+	text-decoration: none;
+	color: #e5e7fb;
+	font-weight: 600;
+	font-size: 18px;
+	padding: 6px 8px;
+}
+
+.navitems a:hover {
+	border-bottom: 1px solid #e5e7fb;
+}
+
+.titulo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	color: #000511;
+}
+
+.filtros {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.filtros input[type='text'] {
+	margin-right: 1rem;
+	padding: 0.5rem;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.tabela {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.tabela table {
+	border: 1px solid #000511;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.tabela th {
+	border: 1px solid #000511;
+	padding: 2px 4px;
+	background-color: #000511;
+	color: #e5e7fb;
+	font-size: 18px;
+}
+
+.tabela td {
+	border: 1px solid #000511;
+	padding: 2px 4px;
+	font-size: 18px;
+}
+
+.paginacao {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+}
+
+.paginacao a {
+	margin: 0 10px;
+	text-decoration: none;
+	color: #000511;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.paginacao span {
+	margin: 0 10px;
+	color: #000511;
+	font-size: 16px;
+}

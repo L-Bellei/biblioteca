@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <script>
+    function filterTable() {
+      const tituloFilter = document.getElementById('tituloFilter').value.toLowerCase();
+      const autorFilter = document.getElementById('autorFilter').value.toLowerCase();
+      const categoriaFilter = document.getElementById('categoriaFilter').value.toLowerCase();
+      const dataFilter = document.getElementById('dataFilter').value;
+      const table = document.getElementById('livrosTable');
+      const tr = table.getElementsByTagName('tr');
+
+      for (let i = 1; i < tr.length; i++) {
+        const tdTitulo = tr[i].getElementsByTagName('td')[0];
+        const tdAutor = tr[i].getElementsByTagName('td')[1];
+        const tdCategoria = tr[i].getElementsByTagName('td')[2];
+        const tdData = tr[i].getElementsByTagName('td')[3];
+
+        if (tdTitulo && tdAutor && tdCategoria && tdData) {
+          const txtTitulo = tdTitulo.textContent || tdTitulo.innerText;
+          const txtAutor = tdAutor.textContent || tdAutor.innerText;
+          const txtCategoria = tdCategoria.textContent || tdCategoria.innerText;
+          const txtData = tdData.textContent || tdData.innerText;
+
+          if (
+            txtTitulo.toLowerCase().indexOf(tituloFilter) > -1 &&
+            txtAutor.toLowerCase().indexOf(autorFilter) > -1 &&
+            txtCategoria.toLowerCase().indexOf(categoriaFilter) > -1 &&
+            txtData.indexOf(dataFilter) > -1
+          ) {
+            tr[i].style.display = '';
+          } else {
+            tr[i].style.display = 'none';
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="icone"></div>
+
+    <div class="navitems">
+      <a href="/">Home</a>
+      <a href="/cadastro">Cadastro</a>
+      <a href="/movimentacoes">Movimentações</a>
+    </div>
+  </nav>
+
+  <div class="titulo">
+    <h1>Livros</h1>
+  </div>
+
+  <div class="filtros">
+    <input type="text" id="tituloFilter" onkeyup="filterTable()" placeholder="Filtrar por título">
+    <input type="text" id="autorFilter" onkeyup="filterTable()" placeholder="Filtrar por autor">
+    <input type="text" id="categoriaFilter" onkeyup="filterTable()" placeholder="Filtrar por categoria">
+    <input type="text" id="dataFilter" onkeyup="filterTable()" placeholder="Filtrar por data (dd/MM/yyyy)">
+  </div>
+
+  <div class="tabela">
+    <table id="livrosTable">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Categoria</th>
+          <th>Data de Lançamento</th>
+          <th>Quantidade em Estoque</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% livros.forEach(livro=> { %>
+          <tr>
+            <td>
+              <%= livro.titulo %>
+            </td>
+            <td>
+              <%= livro.autor %>
+            </td>
+            <td>
+              <%= livro.categoria %>
+            </td>
+            <td>
+              <%= new Date(livro.dataLancamento).toLocaleDateString('pt-BR') %>
+            </td>
+            <td>
+              <%= livro.Estoque ? livro.Estoque.quantidade : 'N/A' %>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="paginacao">
+    <% if (page> 1) { %>
+      <a href="?page=<%= page - 1 %>">Anterior</a>
+      <% } %>
+        <span> Página <%= page %> de <%= pages %> </span>
+        <% if (page < pages) { %>
+          <a href="?page=<%= page + 1 %>">Próxima</a>
+          <% } %>
+  </div>
+</body>
+
+</html>
