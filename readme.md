@@ -29,7 +29,7 @@ Esta aplicação é um sistema de gerenciamento de livros que permite cadastrar 
 1. **Clone o repositório**
 
    ```bash
-   git clone https://github.com/seu-usuario/biblioteca.git
+   git clone https://github.com/L-Bellei/biblioteca.git
    cd biblioteca
    npm install
    npx sequelize-cli db:migrate
